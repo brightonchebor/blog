@@ -5,10 +5,14 @@ from .forms import PostForm, EditForm
 from django.urls import reverse_lazy
 
 # Create your views here.
-#def home(request):
-#    return render(request, 'index.html', {})
+# functional views
+def category_view(request, cats):
+    category_posts = Post.objects.filter(category=cats.replace('-', ' '))
+    return render(request, 'categories.html', {'cats':cats.title().replace('-', ' '),'category_posts':category_posts })
+
+
   
-#class based views
+# class based views
 class HomeView(ListView):
     model = Post
     template_name = 'home.html'
