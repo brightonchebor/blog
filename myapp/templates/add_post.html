@@ -10,6 +10,11 @@
             {{ form.as_p }}
             <button> Post </buttton>
     </div>
+
+    <script>
+        var name = "{{ user.id }}";
+        document.getElementById("elder").value = name;
+    </script>
 {% else %}
 
 You are not allowed here! (and you know it)
