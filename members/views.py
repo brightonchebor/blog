@@ -6,6 +6,9 @@ from .forms import SignUpForm, EditProfileForm
 from django.contrib.auth import views 
 
 # Create your views here.
+def password_success(request):
+    return render(request, 'registration/password_success.html', {})
+
 class PasswordsChangeView(views.PasswordChangeView):
     form_class = PasswordChangeForm
     success_url = reverse_lazy('home')
