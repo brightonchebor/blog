@@ -59,7 +59,7 @@
             {% if post.author.profile_pic.url %}
                 <img src="{{ post.author.profile_pic.url }}" class="card-img">
             {% else %}
-                <img src="{{ static 'theblog/images/image.jpg' }}" class="card-img">
+                <img src="{% static 'theblog/images/image.jpg' %}" class="card-img">
             {% endif %}
         </div>
         <div class="col-md-10">
