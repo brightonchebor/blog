@@ -1,6 +1,24 @@
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 from django.contrib.auth.models import User
 from django import forms
+from myapp.models import Profile
+
+class ProfilePageForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ('bio', 'profile_pic', 'website_url', 'facebook_url', 'x_url', 'instagram_url', 'pinterest_url')
+        
+        widgets = {
+            'bio': forms.Textarea(attrs={'class':'form-control'}),
+            # 'profile_pic': forms.TextInput(attrs={'class':'form-control'}),
+            'website_url': forms.TextInput(attrs={'class':'form-control', 'value':'', 'id':'elder', 'type':'hidden'}),
+            'facebook_url': forms.TextInput(attrs={'class':'form-control'}),
+            'x_url': forms.TextInput(attrs={'class':'form-control'}),
+            'instagram_url': forms.TextInput(attrs={'class':'form-control'}),
+            'pinterest_url': forms.TextInput(attrs={'class':'form-control'}),
+        }
+    
+    
 
 class SignUpForm(UserCreationForm):
     email = forms.EmailField(widget=forms.EmailInput(attrs={'class':'form-control'}))

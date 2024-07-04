@@ -6,8 +6,7 @@
 
 <h1> User Profile </h1>
 
-{{ page_user }}
-
+<br/><br/>
 <div class="card mb-3">
     <div class="row no-gutters">
         <div class="col-md-2">
@@ -23,6 +22,7 @@
                     {{ page_user.user.first_name }}
                     {{ page_user.user.last_name }}
                 </h5>
+
                 <p class="small text-muted ">
                    
                         {% if page_user.website_url %}
@@ -44,9 +44,10 @@
                         {% if page_user.pinterest_url %}
                             <a href="{{ page_user.pinterest_url }}">Pinterest | <a/>
                         {% endif %}
+                        
                 </p>
                 <p class="card-text">
-                    {{ post.author.profile.bio }}
+                    {{ page_user.bio }}
                 </p>
             </div>
         </div>
