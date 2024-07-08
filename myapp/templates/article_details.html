@@ -36,7 +36,6 @@
 
     <br/><br/>
     <hr>
-    <br/>
     <form action="{% url 'like_post' post.pk %}" method="POST">
         {% csrf_token %}
         {% if user.is_authenticated %}
@@ -50,25 +49,8 @@
             <small> <a class="nav-link" href="{% url 'login' %}">Login</a>  to like </small>
         {% endif %}
     </form>
-<br/><br/>
-<hr>
-<h2> Comments... </h2>
 <br/>
-{% if not post.comments.all %}
-    No Comments Yet.... <a href="#"> Add One </a>
-{% else %}
-    {% for comment in post.comments.all %}
-        <strong>
-        {{ comment.name }} -
-        {{ comment.date_added }}
-        </strong>
-        <br/>
-        {{ comment.body }}
-        <br/><br/>
-    {% endfor %}
-{% endif %}
-
-<br/><br/>
+<br/>
 <div class="card mb-3">
     <div class="row no-gutters">
         <div class="col-md-2">
@@ -117,5 +99,31 @@
 <!-- 
     <img src="{{ post.author.profile_pic.url }}" width=200 height=200 class="rounded-circle">
 -->  
+
+<h2> Comments... </h2>
+<br/>
+{% if not post.comments.all %}
+No Comments Yet.... <a href="{% url 'add_comment' post.pk %}"> Add One </a>
+<br/>
+{% else %}
+
+<a href="{% url 'add_comment' post.pk %}"> Add Comment </a>
+<br/><br/>
+    {% for comment in post.comments.all %}
+        <strong>
+        {{ comment.name }} -
+        {{ comment.date_added }}
+        </strong>
+        <br/>
+        {{ comment.body }}
+        <br/><br/>
+
+    {% endfor %}
+    <a href="{% url 'add_comment' post.pk %}"> Add Comment </a>
+    <br/><br/>
+    
+{% endif %}
+<br/>
+
 
 {% endblock %}
