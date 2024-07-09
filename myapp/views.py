@@ -77,6 +77,10 @@ class AddCommentView(CreateView):
     template_name = 'add_comment.html'
     # fields = '__all__' 
     success_url = reverse_lazy('home')
+
+    def form_valid(self, form):
+        form.instance.post_id = self.kwargs['pk']
+        return super().form_valid(form)
    
 
 
@@ -90,7 +94,7 @@ class AddCategoryView(CreateView):
 class UpdatePostView(UpdateView):
     model = Post
     form_class = EditForm
-    template_name = 'update_post.html'
+    template_name = 'update_post.html' 
     #fields = ('title', 'title_tag', 'body')
 
 class DeletePostView(DeleteView):

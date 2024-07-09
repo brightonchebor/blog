@@ -54,8 +54,8 @@
 <div class="card mb-3">
     <div class="row no-gutters">
         <div class="col-md-2">
-            {% if post.author.profile_pic.url %}
-                <img src="{{ post.author.profile_pic.url }}" class="card-img">
+            {% if post.author.profile.profile_pic %}
+                <img src="{{ post.author.profile.profile_pic.url }}" class="card-img">
             {% else %}
                 <img src="{% static 'theblog/images/default-avatar-icon-of-social-media-user-vector.jpg' %}" class="card-img">
             {% endif %}
